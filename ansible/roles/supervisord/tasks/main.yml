@@ -1,0 +1,10 @@
+---
+#This task is used to install the supervisor daemon
+- name: Install supervisor daemon
+  yum:
+    name: supervisor
+    state: latest
+- name: Copy supervisord config file
+  template:
+    src: supervisord.conf
+    dest: /etc/

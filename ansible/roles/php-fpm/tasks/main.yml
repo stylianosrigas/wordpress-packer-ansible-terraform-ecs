@@ -1,0 +1,57 @@
+---
+#This task will be used to install php and its dependencies. It also installs
+#mysql-python and set ups php fpm to use supervisord.
+- name: Install php
+  yum:
+    name: php
+    state: latest
+- name: Install php-fpm
+  yum:
+    name: php-fpm
+    state: latest
+- name: Install php-enchant
+  yum:
+    name: php-enchant
+    state: latest
+- name: Install php-IDNA_Convert
+  yum:
+    name: php-IDNA_Convert
+    state: latest
+- name: Install php-mbstring
+  yum:
+    name: php-mbstring
+    state: latest
+- name: Install php-mysql
+  yum:
+    name: php-mysql
+    state: latest
+- name: Install php-PHPMailer
+  yum:
+    name: php-PHPMailer
+    state: latest
+- name: Install php-process
+  yum:
+    name: php-process
+    state: latest
+- name: Install php-xml
+  yum:
+    name: php-xml
+    state: latest
+- name: Install MySQL-python
+  yum:
+    name: MySQL-python
+    state: present
+
+- name: Disable default pool
+  command: mv /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.disabled creates=/etc/php-fpm.d/www.disabled
+
+- name: Copy php-fpm configuration
+  template:
+    src: wordpress.conf
+    dest: /etc/php-fpm.d/
+
+- name: Setup php-fpm to be managed by supervisord
+  lineinfile:
+    destfile: /etc/php-fpm.conf
+    regexp: 'daemonize'
+    line: 'daemonize = no'

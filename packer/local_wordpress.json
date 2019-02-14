@@ -1,0 +1,28 @@
+{
+  "variables": {
+    "playbook_dir": "../ansible/playbook.yml",
+    "local_repository": "stylianosrigas/wordpress"
+  },
+  "builders": [{
+    "type": "docker",
+    "image": "centos",
+    "commit": true,
+    "privileged": true,
+    "changes": [
+      "CMD [\"/usr/bin/supervisord\"]"
+    ]
+  }],
+  "provisioners": [{
+    "type": "ansible",
+    "playbook_file": "{{user `playbook_dir`}}"
+  }],
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "{{user `local_repository`}}",
+        "tag": "latest"
+      }
+    ]
+  ]
+}

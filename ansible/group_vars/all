@@ -1,0 +1,25 @@
+---
+# Variables listed here are applicable to all host groups
+wp_version: 5.0
+wp_sha256sum: 007e854bd89bced242e04b097c06672de2c719b4386810e297da9dfb2bcda1ef.
+
+#These are the WordPress database settings
+db_name: wordpress # Add your database name
+db_user: wordpress # Add your database username
+db_password: p@ssw0rd # Add your database password
+db_host: # Add your database host
+
+# This is used for the nginx server configuration, but access to the
+# WordPress site is not restricted by a named host.
+nginx_port: 80
+server_hostname: server.example.com
+
+# Disable All Updates
+# By default automatic updates are enabled, set this value to true to disable all automatic updates
+auto_up_disable: false
+
+#Define Core Update Level
+# true  = Development, minor, and major updates are all enabled
+# false = Development, minor, and major updates are all disabled
+# minor = Minor updates are enabled, development, and major updates are disabled
+core_update_level: true

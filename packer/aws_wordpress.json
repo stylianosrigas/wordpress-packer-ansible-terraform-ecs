@@ -1,0 +1,38 @@
+{
+  "variables": {
+    "playbook_dir": "../ansible/playbook.yml",
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "aws_ecr_repository": "783905791289.dkr.ecr.eu-west-2.amazonaws.com/wordpress-directory",
+    "aws_ecr_image_tag": "wordpress"
+  },
+  "builders": [{
+    "type": "docker",
+    "image": "centos",
+    "commit": true,
+    "privileged": true,
+    "changes": [
+      "CMD [\"/usr/bin/supervisord\"]"
+    ]
+  }],
+  "provisioners": [{
+    "type": "ansible",
+    "playbook_file": "{{user `playbook_dir`}}"
+  }],
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "{{user `aws_ecr_repository`}}",
+        "tag": "{{user `aws_ecr_image_tag`}}"
+      },
+      {
+        "type": "docker-push",
+        "ecr_login": true,
+        "aws_access_key": "{{user `aws_access_key`}}",
+        "aws_secret_key": "{{user `aws_secret_key`}}",
+        "login_server": "{{user `aws_ecr_repository`}}"
+      }
+    ]
+  ]
+}

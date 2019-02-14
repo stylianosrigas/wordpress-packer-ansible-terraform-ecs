@@ -1,0 +1,11 @@
+---
+- name: Install Nginx, Wordpress, PHP-FPM, Supervisor Daemon
+  hosts: all
+  remote_user: root
+
+  roles:
+    - common
+    - nginx
+    - php-fpm
+    - wordpress
+    - supervisord
