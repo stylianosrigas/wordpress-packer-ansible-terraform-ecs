@@ -16,7 +16,7 @@ The code in this repo can be used to create a "ready to use" Wordpress image tha
 
 In order to create the Wordpress image and automate the deployment in AWS I used a number of tools and infrastructure components, which can be seen in more detail in the sections bellow.
 
-<img src="https://photos.app.goo.gl/TFQPD4vbGANghQ138" alt="Solution Design" width="400" height="400" />
+<img src="https://image.prntscr.com/image/BU8Qh4RKTXuGTqjGiW2e2w.png" alt="Solution Design" width="400" height="400" />
 
 
 #### Packer
