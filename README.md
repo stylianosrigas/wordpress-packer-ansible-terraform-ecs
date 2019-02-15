@@ -8,7 +8,7 @@ The code in this repo can be used to create a "ready to use" Wordpress image tha
 
 * Locally installed:
   * Packer
-  * Kindle
+  * Ansible
   * Terraform
 * AWS account
 
