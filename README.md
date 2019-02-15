@@ -59,11 +59,11 @@ At the moment no CI solution is in place and the deployment has to be done manua
 
 There are two different modes available, one for local and one for AWS testing. The local mode requires preexistence of a MariaDB database.
 
-Both modes will need update of the ***ansible/group_vars/all*** file, where the db_name, db_user, db_password and db_host variables need to be specified.
+Both modes will need update of the ***ansible/group_vars/all*** file, where the **db_name**, **db_user**, **db_password** and **db_host** variables need to be specified.
 
 #### Local Mode
 
-Considering that you want to test the Docker image locally and Ansible variables are configured the only thing needed is to update the ***local_repository*** variable in the ***local_wordpress.json*** file with the name you want tag you want to give to your docker image. The next step is to run the ***packer build local_wordpress.json*** command. This command will initiate packer and will output the docker image.
+Considering that you want to test the Docker image locally and Ansible variables are configured the only thing needed is to update the ***local_repository*** variable in the ***local_wordpress.json*** file with the tag you want to give to your docker image. The next step is to run the ***packer build local_wordpress.json*** command. This command will initiate packer and will output the docker image.
 
 #### AWS Mode
 
@@ -71,7 +71,7 @@ If you want to run Wordpress in AWS, the first thing needed is to deploy the ter
 
 A list of variables is used under ***terraform/variables.tf*** and feel free to update anything needed. The ones that must be updated are the DB name, DB password and DB username. Please make sure to use the same values as in the Ansible configuration step.
 
-In addition to the variables, AWS Secret and AWS Access keys need to be added in the ***terraform/main.tf*** file, in the provider section.
+In addition to the variables, **AWS Secret** and **AWS Access** keys need to be added in the ***terraform/main.tf*** file, in the provider section.
 
 After variables and keys are updated, the infrastructure can be deployed by running the **terraform init**, **terraform plan** and **terraform apply** commands from inside the terraform directory.
 
